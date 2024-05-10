@@ -1,0 +1,15 @@
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.111.0"
+uvicorn = "^0.29.0"
+websockets = "^12.0"
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.29"}
+email-validator = "^2.1.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
