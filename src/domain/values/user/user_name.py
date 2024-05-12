@@ -1,13 +1,11 @@
 from dataclasses import dataclass
 
 from domain.common.base_value_obj import BaseValueObject
-from domain.exceptions.user_credentials import UsernameLengthException
+from domain.exceptions.user_exceptions import UsernameLengthException
 
 
 @dataclass(frozen=True)
 class Username(BaseValueObject[str]):
-    value: str
-
     MIN_LENGTH = 3
     MAX_LENGTH = 40
 
