@@ -1,9 +1,9 @@
 import bcrypt
 
-from domain.common.base_pwd_hasher import IPasswordHasher
+from application.common.base_pwd_hasher import BasePasswordHasher
 
 
-class BcryptPasswordHasher(IPasswordHasher):
+class BcryptPasswordHasher(BasePasswordHasher):
     @staticmethod
     def hash_pwd(raw_pwd: str) -> str:
         salt = bcrypt.gensalt()

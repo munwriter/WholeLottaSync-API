@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class IPasswordHasher(ABC):
+class BasePasswordHasher(ABC):
     @staticmethod
     @abstractmethod
     def hash_pwd(raw_pwd: str) -> str:
