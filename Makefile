@@ -20,3 +20,7 @@ prepare: format lint
 .PHONY: migrate
 migrate:
 	@poetry run alembic upgrade head
+
+.PHONY: stats
+stats:
+	@poetry run pygount --format=summary $(src_dir)
