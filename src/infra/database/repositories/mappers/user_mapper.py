@@ -1,5 +1,5 @@
 from domain.entities.user import User
-from infra.persistence.models.user import DBUser
+from infra.database.persistence.models.user import DBUser
 
 # TODO user friend
 # def db_user_to_user_entity(user: DBUser) -> User:
