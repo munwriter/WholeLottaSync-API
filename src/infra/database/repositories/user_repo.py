@@ -16,7 +16,8 @@ class SAUserRepository(BaseUserRepository):
 
     async def create_user(self, user: User) -> CreateUserOutputDTO:
         db_user = user_entity_to_db_user(user)
-        await self.__session.add(db_user)
+        async with self.__session.begin():
+            await self.__session.add(db_user) # type: ignore
         # TODO to separated mapper
         return CreateUserOutputDTO(
             user.id,
@@ -27,9 +28,9 @@ class SAUserRepository(BaseUserRepository):
     async def is_username_exist(self, username: str) -> bool:
         query = select(DBUser).where(DBUser.username == username)
         res = await self.__session.execute(query)
-        return bool(res)
+        return bool(res.scalars().all())
 
     async def is_email_exist(self, email: str) -> bool:
         query = select(DBUser).where(DBUser.email == email)
         res = await self.__session.execute(query)
-        return bool(res)
+        return bool(res.scalars().all())

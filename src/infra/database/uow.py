@@ -13,9 +13,7 @@ class SqlAlchemyUOW(BaseUOW):
     def __post_init__(self) -> None:
         engine = create_async_engine(url=self.__db_config.DB_DSN)
         self._session_factory = async_sessionmaker(
-            engine,
-            expire_on_commit=False,
-            class_=AsyncSession,
+            engine, expire_on_commit=False, class_=AsyncSession, autocommit=False
         )
         self.session = None
 
